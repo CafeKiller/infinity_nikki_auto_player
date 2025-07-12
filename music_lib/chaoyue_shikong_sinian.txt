@@ -1,3 +1,7 @@
+// MUSIC_NAME: 超越时空的思念
+// AUTHOR: https://www.bilibili.com/video/BV1aTqqYWEx7/
+// USABLE: 小提琴
+
 3, 500
 5, 500
 6, 1000 

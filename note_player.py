@@ -138,9 +138,12 @@ class NotePlayer:
         notes = []
         lines = content.strip().split('\n')
         for line in lines:
-            if line.strip():  # 忽略空行
-                note, duration = line.strip().split(',')
-                notes.append((note, int(duration)))
+            # 移除注释和首尾空格
+            clean_line = line.split('//', 1)[0].strip()
+            if clean_line:
+                # 处理可能存在的逗号后空格
+                note_part, duration_part = [s.strip() for s in clean_line.split(',', 1)]
+                notes.append((note_part, int(duration_part)))
         return notes
 
     def toggle_play(self):
