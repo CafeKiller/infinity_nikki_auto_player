@@ -54,7 +54,7 @@ VK_CODE = {
 class NotePlayer:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title("无限暖暖音符播放器 v2.0")
+        self.window.title("InfinityNikki_AutoPlayer")
         self.window.geometry("680x550")
         
         # 样式配置
@@ -197,6 +197,14 @@ class NotePlayer:
         for note, duration in self.current_notes:
             if not self.is_playing:
                 break
+
+            # 处理间隔符号
+            if note == "-":
+                time.sleep(duration/ 1000)
+                self.log_area.insert(tk.END, f"{note}({duration}ms) ")
+                self.log_area.see(tk.END)
+                self.window.update()
+                continue
                 
             if self.send_note(note, duration):
                 self.log_area.insert(tk.END, f"{note}({duration}ms) ")
